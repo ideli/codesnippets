@@ -1,0 +1,63 @@
+# install mysql into /usr/local/mysql
+#  (default user is "root" without password)
+# start mysql daemon
+
+/usr/local/mysql/bin/mysql -u root
+
+mysql> grant all privileges on *.* to noisebandadmin@localhost identified by 'p@ssw0rd' with grant option;
+
+mysql> use noiseband
+
+mysql> create table users (id int not null auto_increment primary key, username varchar (25), age int);
+
+mysql> insert into users values(null, 'admin', 70);
+
+bzw.:
+/usr/local/mysql/bin/mysql noiseband -u noisebandadmin -p
+mysql> select * from products;
+mysql> delete from products where id=40;
+mysql> update products set title="Ostbahn 11" where id=50;
+mysql> insert into products (title,year) values ("zu","44");
+
+
+# in context.xml
+
+<Resource 	name="jdbc/NoisebandDB" auth="Container" 
+				type="javax.sql.DataSource" maxActive="100" 
+				maxIdle="30" maxWait="10000" username="noisebandadmin" password="p@ssw0rd" 
+				driverClassName="com.mysql.jdbc.Driver" 
+				url="jdbc:mysql://localhost:3306/noiseband"/>
+
+
+# in web.xml
+
+<resource-ref> 
+ <description>DB Connection</description> 
+ <res-ref-name>jdbc/NoisebandDB</res-ref-name> 
+ <res-type>javax.sql.DataSource</res-type> 
+ <res-auth>Container</res-auth>
+</resource-ref>
+
+
+
+# later use this connection:
+
+public class DBManager {
+	private DataSource ds=null;
+	
+	private DBManager(){
+		// init the DBManager
+		try {
+			InitialContext initContext = new InitialContext();
+			Context envContext  = (Context)initContext.lookup("java:/comp/env");
+			ds = (DataSource)envContext.lookup("jdbc/NoisebandDB");
+			
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+	}
+	public static DBManager getInstance(){
+		return new DBManager();
+	}
+	...
+	

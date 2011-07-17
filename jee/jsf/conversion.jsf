@@ -1,0 +1,8 @@
+<h:inputText id="birthDate" value="#{UserRegistration.user.birthDate}">
+     <f:convertDateTime pattern="yyyy-MM"/>
+</h:inputText>
+
+
+<h:inputText id="year" value="#{dvd.year}">
+             <f:converter id="javax.faces.Short"/>
+</h:inputText>

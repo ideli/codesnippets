@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tomcat-users>
+ 
+ 	<!--  within the Web-Application you can allow/restrict access to your resources
+ 	
+ 		you need to configure your web.xml file:
+ 		
+ 			a) define a security role "shopmanager"
+ 			
+ 			b) setup the security constraints by allowing/restricting access 
+ 					for the given role for some urls (e.g.: /admin/*")
+ 			
+ 	 -->
+ 
+ 	<role rolename="shopmanager" />
+   	<user password="pa$w0rd" roles="shopmanager" username="admin"/>
+ 
+ 	
+  
+</tomcat-users>

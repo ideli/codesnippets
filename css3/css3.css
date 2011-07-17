@@ -1,0 +1,16 @@
+    #intro {  
+        ...  
+        /* Background-size not implemented yet */  
+        -webkit-background-size: 100%;  
+        -o-background-size: 100%;  
+        -khtml-background-size: 100%;  
+      
+        /* Border-radius not implemented yet */  
+        -moz-border-radius: 22px;  
+        -webkit-border-radius: 22px;  
+    }  
+    
+  /* 
+  	see also
+  	http://net.tutsplus.com/tutorials/html-css-techniques/html-5-and-css-3-the-techniques-youll-soon-be-using/
+  */

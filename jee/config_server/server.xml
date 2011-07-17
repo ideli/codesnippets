@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- find server.xml somewhere in /usr/local/tomcat/conf -->
+<Server port="8005" shutdown="SHUTDOWN">
+  <!-- ... -->
+  <Service name="Catalina">
+  	<!-- ... -->
+  	<Engine defaultHost="localhost" 
+  			name="Catalina">
+  		<!-- ... -->	
+  		<!-- define location of web-applications "webapps" dir
+  			 where you can put the webapps (e.g. "myapp.war") into.
+  			 webapps are unzipped (from *.war) on demand (e.g. dir "myapp")
+  		 -->
+  		<Host 	appBase="webapps" 
+  				autoDeploy="true" 
+  				name="localhost" 
+  				unpackWARs="true">
+  			<!-- ... -->	
+  			<!-- optional: define a special web-application "NoiseBand" 
+  				 in directory "NoiseBand" (located anywhere in the filesystem)
+  		 	-->
+  			<Context 	docBase="NoiseBand" 
+  						path="/NoiseBand" 
+  						reloadable="true" 
+  						source="org.eclipse.jst.jee.server:NoiseBand"/>
+  		</Host>
+  	</Engine>
+  </Service>
+</Server>

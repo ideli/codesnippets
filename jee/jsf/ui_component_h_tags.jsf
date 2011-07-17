@@ -1,0 +1,43 @@
+
+<h:graphicImage id="waveImg" url="/wave.med.gif" />
+
+<h:outputText lang="en_US"
+             value="#{UserNumberBean.minimum}"/> to
+ <h:outputText value="#{UserNumberBean.maximum}"/>.
+ 
+ 
+<h:inputText id="userNo" label="User Number"
+     value="#{UserNumberBean.userNumber}">
+                <f:validateLongRange
+                     minimum="#{UserNumberBean.minimum}"
+                     maximum="#{UserNumberBean.maximum}"
+	converterMessage="#{ErrMsg.userNoConvert}" />
+</h:inputText>
+
+
+<h:commandButton 	id="submit"
+             		action="#{products.buy('dvd17')}" 
+             		value="Submit" />
+             		
+             		
+<h:commandLink id="mychekoutlink" 
+   value="#{msgs.checkoutLabel}" 
+   action="#{basket.checkout}" />
+   
+   
+<h:selectManyCheckbox value="#{user.homeCtry}">
+  <f:selectItem itemLabel="India" itemValue="India" />
+  <f:selectItem itemLabel="China" itemValue="China" />
+  <f:selectItem itemLabel="UK" itemValue="UK" />
+</h:selectManyCheckbox>
+
+
+
+<h:dataTable value="#{products}" var="dvd">
+  <h:column>
+    <f:facet name="header" >
+     <h:outputText value="DVDs"/>
+    </f:facet>    
+    <h:outputText value="#{dvd.title}"/>
+  </h:column>
+</h:dataTable>

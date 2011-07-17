@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"  ?> 
+
+<!-- ant file to create table and insert demo data: -->
+
+<project name="TheNoiseBand2011-WebApp" default="main" basedir=".">
+	
+	<property file="build.properties"/>
+	<property name="db_drv"  value="com.mysql.jdbc.Driver" />
+	<property name="db_name" value="noiseband"/>
+	<property name="db_url"  value="jdbc:mysql://localhost:3306/${db_name}"/>
+	<property name="db_user" value="noisebandadmin"/>
+	<property name="db_pwd"  value="p@ssw0rd"/>
+	
+	
+	<path id="sql.classpath">
+				<fileset dir="${lib.dir}">
+					<include name="**/mysql-connector*.jar"/>
+				</fileset>
+	</path>
+
+	
+	
+	
+	<target name="main" >
+		<echo message="Database '${db_name}' setup:" />
+		<echo message=" (url= '${db_url}')" />
+		<echo message="Now use:" />
+		<echo message=" 'ant new'...... to drop and create the table" />
+		<echo message=" 'ant insert'... to insert some demo data into table" />
+	</target>
+	<target name="insert" >
+		<echo message="add some test data to database '${db_url}'" />
+		
+		<sql 	driver="${db_drv}"
+				url="${db_url}"
+				userid="${db_user}"
+				password="${db_pwd}"
+				print="true"
+				classpathref="sql.classpath">
+			INSERT INTO PRODUCTS (title,year) VALUES ("K.Ostbahn","2010");
+			INSERT INTO PRODUCTS (title,year) VALUES ("F.v.Dannen","2009");
+			INSERT INTO PRODUCTS (title,year) VALUES ("Elem.o.C.","2011");
+			
+			SELECT * FROM PRODUCTS;
+		</sql>
+	</target>
+	
+	<target name="new" >
+		<echo message="drop and create new table" />
+			
+		<sql 	driver="${db_drv}"
+				url="${db_url}"
+				userid="${db_user}"
+				password="${db_pwd}"
+				print="true"
+				classpathref="sql.classpath">
+				
+			DROP TABLE IF EXISTS noiseband.PRODUCTS;
+				
+			create table noiseband.products( 
+					id int not null auto_increment primary key, 
+					title varchar (25), 
+					year varchar(4)
+			)
+				
+			</sql>
+		</target>
+	
+	
+
+</project>

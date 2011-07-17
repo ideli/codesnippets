@@ -1,0 +1,17 @@
+Web Storage API (= DOM Storage)
+	key value pairs
+
+<html>...<body>...
+
+ You have viewed this page
+  <span id="count">an untold number of</span> time(s).
+
+<script>
+	// see http://dev.w3.org/html5/webstorage/
+  if (!localStorage.pageLoadCount)
+    localStorage.pageLoadCount = 0;
+  localStorage.pageLoadCount = parseInt(localStorage.pageLoadCount) + 1;
+  document.getElementById('count').textContent = localStorage.pageLoadCount;
+</script>
+
+</body> </html>

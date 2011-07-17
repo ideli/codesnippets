@@ -1,0 +1,4 @@
+FacesMessage message = new FacesMessage();
+       message.setDetail("Username must be between two...");
+       message.setSummary("Username: 2-25 chars!");
+       message.setSeverity(FacesMessage.SEVERITY_ERROR);

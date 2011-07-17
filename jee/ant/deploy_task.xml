@@ -1,0 +1,29 @@
+...
+use functionality from "catalina-ant.jar":
+
+...
+
+ <target 	name="install" 
+ 			depends="dist" 
+ 			description="Install application to servlet container">
+		<deploy url="${manager.url}" 
+				username="${manager.username}" 
+				password="${manager.password}"
+				path="${app.path}" 
+				localWar="file://${build.home}"/>
+ </target>
+
+... 
+ <taskdef 	name="deploy"	
+			classname="org.apache.catalina.ant.DeployTask"> 	
+	<classpath>
+		<pathelement path="${catalina.home}/server/lib/catalina-ant.jar"/> 
+	</classpath>
+ </taskdef>
+
+ <taskdef 	name="undeploy" 
+			classname="org.apache.catalina.ant.UndeployTask"> 
+	<classpath>
+		<pathelement path="${catalina.home}/server/lib/catalina-ant.jar"/> 
+	</classpath>
+ </taskdef>

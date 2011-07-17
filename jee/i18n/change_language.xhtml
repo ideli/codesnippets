@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:view locale="#{languageBean.locale}"> 
+
+<f:loadBundle basename="at.fhj.itm.i18n.NoiseBandMessages" var="msgs"/>
+
+ 
+		<!-- sample output dependent on language -->
+	    <h:outputText value="#{msgs.usernameDefaultText}" /><br />
+			<h:form>
+				<h:outputText id="uLbl" value="#{msgs.usernameLabel}:" />
+				<h:inputText id="username" value="#{loginMBean.username}" />
+			</h:form>	    
+		<hr />
+
+		
+		<!-- see LanguageBean -->
+          <h:form>  
+                <h:selectOneMenu value="#{languageBean.selectedLanguage}">  
+                     <f:selectItem itemLabel="German" itemValue="de" />
+  					 <f:selectItem itemLabel="English" itemValue="en" />
+                </h:selectOneMenu>  
+                <h:commandButton action="#{languageBean.changeLanguage}" value="Change language" />  
+            </h:form>  
+
+		<!-- 
+			find more examples at:
+			http://www.mkyong.com/jsf2/jsf-2-valuechangelistener-example/
+			http://www.icefaces.org/JForum/posts/list/8717.page
+			
+		 -->
+
+</f:view>
+</html>

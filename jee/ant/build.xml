@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project 	name="Demo-JEE-Project" 
+			default="compile" 
+			basedir="." >
+	
+	<property name="build.home" value="myprojfolder/mybuilddir" />
+	<property name="src.home" 	value="myprojfolder/mysourcedir" />
+	
+	<target name="all" 
+			depends="clean,compile" 
+			description="Clean build and dist directories, then compile"/>
+	
+	<target name="clean" 
+			description="Delete old build and dist directories"> 
+		<delete dir="${build.home}"/> 
+		<delete dir="${dist.home}"/>
+	</target>
+
+	<target name="compile"	
+			description="Compile Java sources"> 
+		<!-- Compile Java classes as necessary --> 
+		<mkdir 	dir="${build.home}/WEB-INF/classes"/> 
+		<javac 	srcdir="${src.home}"
+				destdir="${build.home}/WEB-INF/classes"> 
+		</javac>
+	</target> 
+</project>

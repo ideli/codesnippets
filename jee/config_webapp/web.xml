@@ -1,0 +1,58 @@
+<!-- Note: for mapping url to servlets you can use
+ 	 annotations (located above the class definition)
+ 	 e.g.:
+ 	 ... 
+ 	 @WebServlet({ "/Hello", "/hello", "/hello-world", "/welcome/*" })
+ 	 public class HelloWorldServlet extends HttpServlet {
+ 	 ...
+ 	 OR: web.xml 
+ 	 web.xml must be located in "invisible" folder "WEB-INF"
+ 	 ...
+ 	 (annotations AND web.xml can be both used at the same time)
+  -->
+<?xml version="1.0" encoding="UTF-8"?> 
+<web-app 	version="3.0" 
+			xmlns="http://java.sun.com/xml/ns/javaee" 
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"> 
+ <!-- ... --> 
+ <!-- The mappings for the JSP servlet -->
+ <servlet-mapping>
+        <servlet-name>jsp</servlet-name>
+        <url-pattern>*.jsp</url-pattern>
+ </servlet-mapping>
+ 
+ 
+ <!-- Mapping a Hello World Servlet (to the url "/hi") -->
+  <servlet>
+    <servlet-name>Hello World Test Servlet</servlet-name>
+    <servlet-class>test.fhj.itm.HelloWorldServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>  
+    
+  <servlet-mapping>
+        <servlet-name>Hello World Test Servlet</servlet-name>
+        <url-pattern>/hi</url-pattern>
+  </servlet-mapping>
+ 
+ <!-- ... --> 
+ <session-config>
+        <session-timeout>30</session-timeout>
+ </session-config>
+
+
+ <!-- ... --> 
+ <!-- for static contents map extensions. E.g.: --> 
+ <mime-mapping>
+        <extension>gif</extension>
+        <mime-type>image/gif</mime-type>
+ </mime-mapping>
+ 
+ <!-- ... --> 
+ <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+ </welcome-file-list>
+    
+</web-app>

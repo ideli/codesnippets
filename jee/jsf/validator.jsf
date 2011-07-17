@@ -1,0 +1,13 @@
+<h:inputText id="dvdyear" value="#{year}">
+      <f:validateLongRange maximum="2012"
+                           minimum="1940"/>
+</h:inputText>
+
+
+<h:inputText id="firstName"
+                value="#{login.username}">
+	<f:validateLength minimum="2" 
+				  maximum="25" />
+</h:inputText>
+
+

@@ -1,0 +1,32 @@
+ <html><head>
+ 	<script>
+ 		// see also:
+ 		// demo on page http://html5demos.com/geo
+ 		function okShowLongAndLat(currPos){
+ 			document.getElementById("lat").innerHTML="Latitude="+currPos.coords.latitude;
+ 			document.getElementById("lng").innerHTML="Longitude="+currPos.coords.longitude;
+ 			document.getElementById("msg").innerHTML="Location determined.";
+ 		};
+ 		function notOkShowErr(e){
+ 			document.getElementById("msg").innerHTML="Error getting current location: "+e.message;
+ 		};
+ 		
+ 		function init(){
+ 				if (navigator.geolocation) {
+ 					document.getElementById("msg").innerHTML="GEO location is supported. Waiting for current location...";
+ 					navigator.geolocation.getCurrentPosition(okShowLongAndLat,notOkShowErr);
+ 				} else {
+ 					document.getElementById("msg").innerHTML="GEO location is NOT supported";
+ 				}
+ 		}	
+ 	</script>
+ 
+ </h:head>
+
+ <body onload="init();">
+    Geo Location
+    <div id="msg" />
+    <br />
+ 	Your Position:<br /> 	<div id="lat" /> 	<div id="lng" />
+ </body>
+ </html>

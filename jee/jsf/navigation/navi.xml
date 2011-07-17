@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config ....
+
+	<!-- ... -->
+
+	<navigation-rule>
+		<display-name>login.xhtml</display-name>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>GO-HOME</from-outcome>
+			<to-view-id>welcome.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>LOGIN-OK</from-outcome>
+			<to-view-id>DVDs.jsf</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	
+</faces-config>

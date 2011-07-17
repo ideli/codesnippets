@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config ....
+
+	<!-- ... -->
+	<managed-bean>
+		<managed-bean-name>dvdBean</managed-bean-name>
+		<managed-bean-class>at.fhj.itm.model.DVD</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>A list of Products: DVDs</description>
+		<managed-bean-name>products</managed-bean-name>
+		<managed-bean-class>db.Products</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>Your Shopping cart: </description>
+		<managed-bean-name>basket</managed-bean-name>
+		<managed-bean-class>at.fhj.itm.model.ListOfDVDs</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	
+</faces-config>

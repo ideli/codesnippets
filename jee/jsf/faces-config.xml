@@ -1,0 +1,67 @@
+<!--  Note the mapping - configuration in file "WEB-INF/web.xml" needed: 
+
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+
+-->
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+    
+    
+	<application>
+		<resource-bundle>
+			<base-name>at.fhj.itm.i18n.NoiseBandMessages</base-name>
+			<var>msgs</var>
+		</resource-bundle>
+	</application>
+    
+	<managed-bean>
+		<managed-bean-name>dvdBean</managed-bean-name>
+		<managed-bean-class>at.fhj.itm.model.DVD</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>A list of Products: DVDs</description>
+		<managed-bean-name>products</managed-bean-name>
+		<managed-bean-class>db.Products</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>Your Shopping cart: </description>
+		<managed-bean-name>basket</managed-bean-name>
+		<managed-bean-class>at.fhj.itm.model.ListOfDVDs</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<!-- ... -->
+
+
+	<navigation-rule>
+		<display-name>login.xhtml</display-name>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>GO-HOME</from-outcome>
+			<to-view-id>welcome.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>LOGIN-OK</from-outcome>
+			<to-view-id>DVDs.jsf</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+
+</faces-config>
